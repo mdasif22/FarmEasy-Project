@@ -8,7 +8,7 @@
 <body>
     <div align="center">Welcome To The Farmer Page</div><hr>
     <div align="center">Your Selling Products</div><hr>
-    <form>
+    <form id="crop">
         <div>
             <div class="col-10">
                 <label class="quantity">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Quantity in KG:</label>&emsp;&emsp;
@@ -16,8 +16,8 @@
                 <label class="wheat">Wheat:</label>
             </div>
             <div class="col-90">
-                &emsp;&emsp;&emsp;&emsp;<input type="number" id="name" name="name" placeholder="Quantity in KG">
-                <input type="number" id="name" name="name" placeholder="Price">
+                &emsp;&emsp;&emsp;&emsp;<input type="number" id="wheat" name="name" placeholder="Quantity in KG">
+                <input type="number" id="wprice" name="name" placeholder="Price">
                 
             </div>
         </div>
@@ -26,8 +26,8 @@
                 <label for="fname">Rice:</label>
             </div>
             <div class="col-90">
-                &emsp;&emsp;&emsp;&emsp;<input type="number" id="name" name="name" placeholder="Quantity in KG">
-                <input type="number" id="name" name="name" placeholder="Price">
+                &emsp;&emsp;&emsp;&emsp;<input type="number" id="rice" name="name" placeholder="Quantity in KG">
+                <input type="number" id="rprice" name="name" placeholder="Price">
                 
             </div>
         </div>
@@ -36,8 +36,8 @@
                 <label for="fname">Pulse:</label>
             </div>
             <div class="col-90">
-                &emsp;&emsp;&emsp;&emsp;<input type="number" id="name" name="name" placeholder="Quantity in KG">
-                <input type="number" id="name" name="name" placeholder="Price">
+                &emsp;&emsp;&emsp;&emsp;<input type="number" id="pulse" name="name" placeholder="Quantity in KG">
+                <input type="number" id="pprice" name="name" placeholder="Price">
                 
             </div>
         </div>
@@ -46,8 +46,8 @@
                 <label for="fname">Spices:</label>
             </div>
             <div class="col-90">
-                &emsp;&emsp;&emsp;&emsp;<input type="number" id="name" name="name" placeholder="Quantity in KG">
-                <input type="number" id="name" name="name" placeholder="Price">
+                &emsp;&emsp;&emsp;&emsp;<input type="number" id="spice" name="name" placeholder="Quantity in KG">
+                <input type="number" id="sprice" name="name" placeholder="Price">
                 
             </div>
         </div>
@@ -56,12 +56,20 @@
                 <label for="fname">Vegetables:</label>
             </div>
             <div class="col-90">
-                &emsp;&emsp;&emsp;&emsp;<input type="number" id="name" name="name" placeholder="Quantity in KG">
-                <input type="number" id="name" name="name" placeholder="Price">
-                
+                &emsp;&emsp;&emsp;&emsp;<input type="number" id="veg" name="name" placeholder="Quantity in KG">
+                <input type="number" id="vprice" name="name" placeholder="Price">
             </div>
         </div>
-
+        <div>
+            <button type="submit">Proceed to sell</button>
+        </div>
     </form>
 </body>
+
+
+     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase.js"></script>
+
+
+<!-- Our script must be loaded after firebase references -->
+<script src="productSell.js"></script>
 </html>
