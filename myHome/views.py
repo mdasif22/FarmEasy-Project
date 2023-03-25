@@ -4,6 +4,7 @@ from users.models import Profile
 from .forms import CropForm
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     return render(request, 'myHome/index.html')
@@ -14,6 +15,7 @@ def cart_products(request):
     context = {'products':products} 
     return  render(request,'myHome/cart.html',context)
 
+@login_required(login_url="login")
 def sell_product_view(request):
     form = CropForm()
     if request.method == 'POST':
@@ -25,6 +27,7 @@ def sell_product_view(request):
     context = {'form' : form}
     return render(request,"myHome/sell_form.html",context)
 
+@login_required(login_url="login")
 def buy(request):
     user_obj = Profile.objects.get(user=request.user)
     crops = Sell_Product.objects.filter(crop_owner=user_obj)
@@ -49,10 +52,13 @@ def sell(request):
 def cart(request):
     return render(request, 'myhome/cart.html')    
 
-def single_crop(request):
-    user_obj = Profile.objects.get(user=request.user)
-    crop = Sell_Product.objects.get(id=2)
+def single_crop(request, pk):
+    #user_obj = Profile.objects.get(user=request.user)
+    crop = Sell_Product.objects.get(id=pk)
     context = {'crop':crop} 
     return  render(request,'myHome/product.html',context)
     
-
+def add_to_cart(request):
+    crop_obj = request.POST.get('crop_obj')
+    print("hello working!!!")
+    print(crop_obj)

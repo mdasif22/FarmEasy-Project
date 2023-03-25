@@ -1,6 +1,7 @@
 from django.db import models
 from users.models import Profile
 from django.contrib.auth.models import User
+import uuid
 
 class Product(models.Model):
     owner = models.ForeignKey(Profile,null=True,blank=True,on_delete=models.SET_NULL)
@@ -19,4 +20,5 @@ class Sell_Product(models.Model):
     
     def __str__(self):
         return str(self.crop_name)
-    
+
+ 

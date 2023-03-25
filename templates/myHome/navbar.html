@@ -25,6 +25,18 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{% static 'style.css' %}" rel="stylesheet">
+
+    <script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
+
+    
+{% comment %} Changing multiple languages {% endcomment %}
+<script>
+	function loadGoogleTranslate()
+	{
+		new google.translate.TranslateElement("myid")
+	}
+</script>
+
 </head>
 
 <body>

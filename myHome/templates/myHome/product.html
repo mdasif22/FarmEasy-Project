@@ -29,14 +29,21 @@
           <div class="image-box">
             <div class="images"id="image-1" ></div>
           </div>
+
+          <form action="{% url 'add_to_cart' %}"
+             method="POST" enctype="multipart/form-data">
+             {% csrf_token %}
+            
           <div class="text-box">
-            <h2 class="item">Wheat</h2>
-            <h3 class="price">199rs</h3>
-            <p class="description">A bag of fresh and healthy wheat!</p>
+            <input type="text" name="crop_obj" hidden value="{{crop}}">
+            <h2 class="item">{{crop.crop_name}}</h2>
+            <h3 class="price">{{crop.crop_price}}/-</h3>
+            <p class="description">By : {{crop.crop_owner.name}}</p>
             <label for="item-1-quantity">Quantity:</label>
-            <input type="text" name="item-1-quantity" id="item-1-quantity" value="1">
-            <button type="button" name="item-1-button" id="item-1-button">Add to Cart</button>
+            <h3 class="price">{{crop.crop_quan}}</h3>
+            <button type="submit" name="item-1-button" id="item-1-button">Add to Cart</button>
           </div>
+        </form>
         </div>
       </div>
     {%endblock content %} 
