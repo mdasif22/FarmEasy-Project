@@ -15,4 +15,8 @@ urlpatterns = [
     path("cart", views.cart, name="Cart"),
     path("crop/<int:pk>", views.single_crop, name="crop"),
     path("add_to_cart", views.add_to_cart, name="add_to_cart"),
+    path("jobs", views.jobs, name="jobs"),
+    path("worker_form", views.worker_view, name="worker_form"),
+    path("user_to_us", views.user_to_us_view, name="user_to_us"),
+    path("check_status", views.check_status, name="check_status"),
 ]

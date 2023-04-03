@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from .models import Product,Sell_Product
+from .models import Cart,Sell_Product,User_to_Farmeasy
 from users.models import Profile
-from .forms import CropForm
+from .forms import CropForm,WorkerForm,UserToUsForm
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from django.contrib.auth.decorators import login_required
@@ -11,28 +11,94 @@ def index(request):
 
 def cart_products(request):
     user_obj = Profile.objects.get(user=request.user)
-    products = Product.objects.filter(owner=user_obj)
-    context = {'products':products} 
+    products = Cart.objects.filter(current_user=user_obj)
+    total = 0
+    for item in products:
+        total += item.cart_obj.crop_price * item.cart_obj.crop_quan
+    context = {'products':products,'total' :total}
     return  render(request,'myHome/cart.html',context)
 
 @login_required(login_url="login")
 def sell_product_view(request):
-    form = CropForm()
+
+    crop_owner = Profile.objects.get(user=request.user)
+    crop_name = request.POST.get("crop_name")
+    crop_price = request.POST.get("crop_price")
+    crop_quan = request.POST.get("crop_quan")
     if request.method == 'POST':
-        form = CropForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('home')
+        product_obj = Sell_Product.objects.get_or_create(crop_owner=crop_owner,crop_name=crop_name,crop_quan=crop_quan,crop_price=crop_price)
+        return redirect('home')
+
+    # form = CropForm()
+    # if request.method == 'POST':
+    #     form = CropForm(request.POST)
+    #     if form.is_valid():
+    #         form.save()
+    #         return redirect('home')
     
-    context = {'form' : form}
+    # context = {'form' : form}
+    context = {}
     return render(request,"myHome/sell_form.html",context)
 
 @login_required(login_url="login")
 def buy(request):
     user_obj = Profile.objects.get(user=request.user)
-    crops = Sell_Product.objects.filter(crop_owner=user_obj)
+    crops = Sell_Product.objects.all()
+    #crops = Sell_Product.objects.filter(crop_owner=user_obj)
     context = {'crops':crops} 
     return  render(request,'myHome/Buy.html',context)
+
+
+def single_crop(request, pk):
+    #user_obj = Profile.objects.get(user=request.user)
+    crop = Sell_Product.objects.get(id=pk)
+    context = {'crop':crop} 
+    return  render(request,'myHome/product.html',context)
+    
+def add_to_cart(request):
+    crop_obj = request.POST.get('crop_obj')
+
+    login_user = Profile.objects.get(user=request.user)
+    buy_obj = Sell_Product.objects.get(id=crop_obj)
+    obj = Cart.objects.create(current_user=login_user, cart_obj=buy_obj)
+
+    # product_obj = Cart.objects.create()
+    # product_obj.current_user = Profile.objects.get(user=request.user)
+    # product_obj.cart_obj = Sell_Product.objects.get(id=crop_obj)
+    # product_obj.save()
+    return render(request,'myHome/index.html')
+
+
+@login_required(login_url="login")
+def jobs(request):
+    return render(request,'myHome/jobs.html')
+
+def worker_view(request):
+    form = WorkerForm()
+    if request.method == 'POST':
+        form = WorkerForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    context = {'form' : form}
+    return render(request,"myHome/worker_form.html",context)
+
+def user_to_us_view(request):
+    form = UserToUsForm()
+    if request.method == 'POST':
+        form = UserToUsForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    
+    context = {'form' : form}
+    return render(request,"myHome/user_to_us_form.html",context)
+
+def check_status(request):
+    user_obj = Profile.objects.get(user=request.user)
+    crops = User_to_Farmeasy.objects.filter(crop_owner=user_obj)
+    context = {'crops':crops}
+    return render(request, 'myHome/status.html',context)
 
 def about(request):
     return render(request, 'myhome/about.html')
@@ -50,15 +116,6 @@ def sell(request):
    return render(request, 'myhome/sell.html')        
     
 def cart(request):
-    return render(request, 'myhome/cart.html')    
+    return render(request, 'myhome/cart.html') 
 
-def single_crop(request, pk):
-    #user_obj = Profile.objects.get(user=request.user)
-    crop = Sell_Product.objects.get(id=pk)
-    context = {'crop':crop} 
-    return  render(request,'myHome/product.html',context)
-    
-def add_to_cart(request):
-    crop_obj = request.POST.get('crop_obj')
-    print("hello working!!!")
-    print(crop_obj)
+   

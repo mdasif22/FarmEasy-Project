@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from .forms import customRegistrationForm
 from .forms import ProfileForm
+from myHome.models import Profile,Sell_Product,User
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 
@@ -29,4 +30,9 @@ def user_data(request):
     return render(request,"user_form.html",context)
 
 def profile(request):
-    return render(request, 'profile.html') 
+    return render(request, 'profile.html')
+def farmer_crop_profile_view(request):
+    user_obj = Profile.objects.get(user=request.user)
+    crops = Sell_Product.objects.filter(crop_owner=user_obj)
+    context = {'crops': crops}
+    return render(request, 'farmer_crop_profile.html',context)

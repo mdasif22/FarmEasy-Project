@@ -1,4 +1,4 @@
-
+{% include 'myHome/navbar.html' %}
 {% block content %}
 
     <!-- Main Section -->
@@ -6,7 +6,7 @@
         <div class="content-box">
             <div class="formWrapper">
                 <br>
-                <form class="form" method="POST" enctype="multipart/form-data">
+                <center> <form class="form" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     {%for field in form%}
                     <div class="form__field">
@@ -16,9 +16,10 @@
                     {%endfor%}
                     {% comment %} {{ form.as_p }} {% endcomment %}
                     <input class="btn btn--sub btn--lg  my-md" type="submit" value="Submit/Apply" />
-                </form>
+                </form> </center>
             </div>
         </div>
     </main>
 
 {% endblock content %}
+{% include 'myHome/footer.html' %}

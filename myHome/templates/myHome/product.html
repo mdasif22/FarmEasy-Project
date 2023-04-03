@@ -34,15 +34,15 @@
              method="POST" enctype="multipart/form-data">
              {% csrf_token %}
             
-          <div class="text-box">
-            <input type="text" name="crop_obj" hidden value="{{crop}}">
-            <h2 class="item">{{crop.crop_name}}</h2>
-            <h3 class="price">{{crop.crop_price}}/-</h3>
-            <p class="description">By : {{crop.crop_owner.name}}</p>
-            <label for="item-1-quantity">Quantity:</label>
-            <h3 class="price">{{crop.crop_quan}}</h3>
-            <button type="submit" name="item-1-button" id="item-1-button">Add to Cart</button>
-          </div>
+            <div class="text-box">
+                <input type="text" name="crop_obj" hidden value="{{crop.id}}">
+                <h2 class="item">{{crop.crop_name}}</h2>
+                <h3 class="price">{{crop.crop_price}}/Kg</h3>
+                <p class="description">By : {{crop.crop_owner.name}}</p>
+                <label for="item-1-quantity">Quantity:</label>
+                <h3 class="price">{{crop.crop_quan}} KG</h3>
+                <button type="submit" name="item-1-button" id="item-1-button">Add to Cart</button>
+            </div>
         </form>
         </div>
       </div>
