@@ -31,6 +31,8 @@ def user_data(request):
 
 def profile(request):
     return render(request, 'profile.html')
+
+
 def farmer_crop_profile_view(request):
     user_obj = Profile.objects.get(user=request.user)
     crops = Sell_Product.objects.filter(crop_owner=user_obj)

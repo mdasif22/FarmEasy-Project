@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>cart</title>
-    <link rel="stylesheet" href="{% static 'product.css' %}">
+    <link rel="stylesheet" href="{% static 'css/product.css' %}">
 </head>
     <body>
         {% include 'myHome/navbar.html' %}
@@ -16,17 +16,24 @@
                     <div class="table-content">
                       <div class="cart-product">
                         <div class="cart-image-box">
-                          <div class="cart-images" id="image-4"></div>
+                          <img src="{{ obj.crop_img.url }}">
                         </div>
                         <h2 class="cart-item">{{obj.crop_name}}</h2>
                       </div>
                       <div class="cart-price">
                         <h3 class="price">{{obj.crop_price}}/-</h3>
                       </div>
-                      <div class="cart-quantity">
-                        <p class="cart-description">{{obj.crop_quan}} Kg</p>
-                      </div>
+{#                      <div class="cart-price">#}
+{#                        <h3 class="cart-description">{{obj.crop_quan}} Kg</h3>#}
+{#                      </div>#}
+                        <div class="cart-price">
+                            <h3 class="price">{{obj.crop_quan}} Kg</h3>
+                        </div>
                     </div>
+
+                    {% comment %} <h1>Get Your QR Code</h1>
+                    <img src={{obj.selling_qr_code.url}}> {% endcomment %}
+
                 {% endfor %}
             {% else %}
                 <div>

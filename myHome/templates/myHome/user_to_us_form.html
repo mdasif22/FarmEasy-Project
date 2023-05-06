@@ -10,12 +10,7 @@
                 <br>
                 <center> <form class="form" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
-                    {%for field in form%}
-                    <div class="form__field">
-                        <label>{{field.label}}: </label>
-                        {{field}}
-                    </div><br>
-                    {%endfor%}
+                   {{ form.as_p }}
                     {% comment %} {{ form.as_p }} {% endcomment %}
                     <input class="btn btn--sub btn--lg  my-md" type="submit" value="Submit/Apply" /><br>
                     <a href="{% url 'check_status' %}">Check Status</a>

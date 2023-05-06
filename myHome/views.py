@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Cart,Sell_Product,User_to_Farmeasy
 from users.models import Profile
-from .forms import CropForm,WorkerForm,UserToUsForm
+from .forms import CropForm,WarehouseWorkerForm,DistributionWorkerForm,UserToUsForm
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from django.contrib.auth.decorators import login_required
@@ -25,8 +25,15 @@ def sell_product_view(request):
     crop_name = request.POST.get("crop_name")
     crop_price = request.POST.get("crop_price")
     crop_quan = request.POST.get("crop_quan")
+    crop_img = request.FILES.get("crop_img")
+    
+    # qr_img = request.FILES.get("crop_img")
+    # list1 = []
+    # for items in Sell_Product.objects.get(user=request.user):
+    #     list1+=items
+    
     if request.method == 'POST':
-        product_obj = Sell_Product.objects.get_or_create(crop_owner=crop_owner,crop_name=crop_name,crop_quan=crop_quan,crop_price=crop_price)
+        product_obj = Sell_Product.objects.get_or_create(crop_owner=crop_owner,crop_name=crop_name,crop_quan=crop_quan,crop_price=crop_price,crop_img=crop_img)
         return redirect('home')
 
     # form = CropForm()
@@ -73,22 +80,43 @@ def add_to_cart(request):
 def jobs(request):
     return render(request,'myHome/jobs.html')
 
-def worker_view(request):
-    form = WorkerForm()
+def worker_in_warehouse_view(request):
+    form = WarehouseWorkerForm()
     if request.method == 'POST':
-        form = WorkerForm(request.POST)
+        form = WarehouseWorkerForm(request.POST)
         if form.is_valid():
-            form.save()
+            instance = form.save(commit=False)
+            instance.user = Profile.objects.get(user=request.user)
+            instance.save()
             return redirect('home')
     context = {'form' : form}
-    return render(request,"myHome/worker_form.html",context)
+    return render(request,"myHome/worker_in_warehouse_form.html",context)
+
+def worker_in_distribution_view(request):
+    form = DistributionWorkerForm()
+    login_user = Profile.objects.get(user=request.user)
+    if request.method == 'POST':
+        form = DistributionWorkerForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = Profile.objects.get(user=request.user)
+            #instance.worker_img = request.FILES.get(request.POST)
+            instance.save()
+            return redirect('home')
+    context = {'form' : form}
+    return render(request,"myHome/worker_in_distribution_form.html",context)
 
 def user_to_us_view(request):
     form = UserToUsForm()
     if request.method == 'POST':
-        form = UserToUsForm(request.POST)
+        form = UserToUsForm(request.POST,request.FILES)
         if form.is_valid():
-            form.save()
+            instance = form.save(commit=False)
+            #instance.crop_owner = request.user
+            #login_user = Profile.objects.get(user=request.user)
+            instance.crop_owner = Profile.objects.get(user=request.user)
+            instance.save()
+            #form.save()
             return redirect('home')
     
     context = {'form' : form}
@@ -101,6 +129,7 @@ def check_status(request):
     return render(request, 'myHome/status.html',context)
 
 def about(request):
+    context = {}
     return render(request, 'myhome/about.html')
 
 def contact(request):

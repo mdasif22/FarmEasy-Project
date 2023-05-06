@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>cart</title>
-    <link rel="stylesheet" href="{% static 'product.css' %}">
+    <link rel="stylesheet" href="{% static 'css/product.css' %}">
 </head>
 <body>
   {% include 'myHome/navbar.html' %}
@@ -39,7 +39,9 @@
         <div class="table-content">
           <div class="cart-product">  
             <div class="cart-image-box">
-              <div class="cart-images" id="image-4"></div>
+              <div class="cart-images" id="">
+                  <img src="{{ obj.cart_obj.crop_img.url }}">
+              </div>
             </div>
             <h2 class="cart-item">{{obj.cart_obj.crop_name}}</h2>
           </div>
@@ -49,6 +51,7 @@
           <div class="cart-quantity">
             <p class="cart-description">{{obj.cart_obj.crop_quan}} Kg</p>
           </div>
+
           <div class="cart-total">
             <h3 class="price">Total : {% widthratio obj.cart_obj.crop_quan 1 obj.cart_obj.crop_price %} </h3>
             <button type="button" class="remove" name="remove-1" id="remove-1">x</button>

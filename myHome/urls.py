@@ -1,5 +1,7 @@
-from django.urls import path
+from django.urls import path,include
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path("", views.index, name="home"),
@@ -16,7 +18,11 @@ urlpatterns = [
     path("crop/<int:pk>", views.single_crop, name="crop"),
     path("add_to_cart", views.add_to_cart, name="add_to_cart"),
     path("jobs", views.jobs, name="jobs"),
-    path("worker_form", views.worker_view, name="worker_form"),
     path("user_to_us", views.user_to_us_view, name="user_to_us"),
     path("check_status", views.check_status, name="check_status"),
+    path("worker_in_warehouse_url", views.worker_in_warehouse_view, name="worker_in_warehouse_url"),
+    path("worker_in_distribution_url", views.worker_in_distribution_view, name="worker_in_distribution_url"),
 ]
+
+urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+urlpatterns+= static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)

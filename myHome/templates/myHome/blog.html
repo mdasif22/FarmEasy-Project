@@ -2,29 +2,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <title>FASTER - Logistics Company Website Template</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
-
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
-
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="{% static 'style.css' %}" rel="stylesheet">
-</head>
 
 <body>
     {% include 'myHome/navbar.html' %}
@@ -52,7 +29,7 @@
         <div class="row">
             <div class="col-md-6 mb-5">
                 <div class="position-relative">
-                    <img class="img-fluid w-100" src="./Photos/blog-1.jpg" alt="">
+                    <img class="img-fluid w-100" src="{% static 'image/blog-4.jpg'%}" alt="">
                     <div class="position-absolute bg-primary d-flex flex-column align-items-center justify-content-center rounded-circle"
                         style="width: 60px; height: 60px; bottom: -30px; right: 30px;">
                         <h4 class="font-weight-bold mb-n1">16</h4>
@@ -60,9 +37,9 @@
                     </div>
                 </div>
                 <div class="bg-secondary" style="padding: 30px;">
-                    <div class="d-flex mb-3">
+                    <div class="d-flex mb-2">
                         <div class="d-flex align-items-center">
-                            <img class="rounded-circle" style="width: 40px; height: 40px;" src="{% static 'user-1.jpg'%}" alt="">
+                            <img class="rounded-circle" style="width: 40px; height: 40px;" src="{% static '/image/user-1.jpg'%}" alt="">
                             <a class="text-muted ml-2" href="">Sarbjit</a>
                         </div>
                         <div class="d-flex align-items-center ml-4">
@@ -77,17 +54,17 @@
             </div>
             <div class="col-md-6 mb-5">
                 <div class="position-relative">
-                    <img class="img-fluid w-100" src="./Photos/blog-2.jpg" alt="">
+                    <img class="img-fluid w-100" src="{% static 'image/blog-2.jpg'%}" alt="">
                     <div class="position-absolute bg-primary d-flex flex-column align-items-center justify-content-center rounded-circle"
                         style="width: 60px; height: 60px; bottom: -30px; right: 30px;">
-                        <h4 class="font-weight-bold mb-n1">16</h4>
-                        <small class="text-white text-uppercase">Jan</small>
+                        <h4 class="font-weight-bold mb-n1">24</h4>
+                        <small class="text-white text-uppercase">Feb</small>
                     </div>
                 </div>
                 <div class="bg-secondary" style="padding: 30px;">
                     <div class="d-flex mb-3">
                         <div class="d-flex align-items-center">
-                            <img class="rounded-circle" style="width: 40px; height: 40px;" src="{% static 'user-2.jpg' %}"alt="">
+                            <img class="rounded-circle" style="width: 40px; height: 40px;" src="{% static '/image/user-2.jpg'%}" alt="">
                             <a class="text-muted ml-2" href="">kamlesh singh</a>
                         </div>
                         <div class="d-flex align-items-center ml-4">
@@ -100,83 +77,67 @@
                     <a class="border-bottom border-primary text-uppercase text-decoration-none" href="">Read More <i class="fa fa-angle-right"></i></a>
                 </div>
             </div>
+
+            <div class="row">
+            <div class="col-md-6 mb-5">
+                <div class="position-relative">
+                    <img class="img-fluid w-100" src="{% static 'image/blog-3.jpg'%}" alt="">
+                    <div class="position-absolute bg-primary d-flex flex-column align-items-center justify-content-center rounded-circle"
+                        style="width: 60px; height: 60px; bottom: -30px; right: 30px;">
+                        <h4 class="font-weight-bold mb-n1">16</h4>
+                        <small class="text-white text-uppercase">Jan</small>
+                    </div>
+                </div>
+                <div class="bg-secondary" style="padding: 30px;">
+                    <div class="d-flex mb-2">
+                        <div class="d-flex align-items-center">
+                            <img class="rounded-circle" style="width: 40px; height: 40px;" src="{% static '/image/user-3.jpg'%}" alt="">
+                            <a class="text-muted ml-2" href="">Asif</a>
+                        </div>
+                        <div class="d-flex align-items-center ml-4">
+                            <i class="far fa-bookmark text-primary"></i>
+                            <a class="text-muted ml-2" href="">ABC</a>
+                        </div>
+                    </div>
+                    <h4 class="font-weight-bold mb-3">ETC</h4>
+                    <p>As part of Microfinancing Project, SIF aims to improve income of farmer women who are in distress because of family situation and lack of financial support. The implementation of project started in March 2020 with partner organization Manaswini/ Manavlok. </p>
+                    <a class="border-bottom border-primary text-uppercase text-decoration-none" href="">Read More <i class="fa fa-angle-right"></i></a>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-5">
+                <div class="position-relative">
+                    <img class="img-fluid w-100" src="{% static 'image/blog-1.jpg'%}" alt="">
+                    <div class="position-absolute bg-primary d-flex flex-column align-items-center justify-content-center rounded-circle"
+                        style="width: 60px; height: 60px; bottom: -30px; right: 30px;">
+                        <h4 class="font-weight-bold mb-n1">24</h4>
+                        <small class="text-white text-uppercase">Feb</small>
+                    </div>
+                </div>
+                <div class="bg-secondary" style="padding: 30px;">
+                    <div class="d-flex mb-3">
+                        <div class="d-flex align-items-center">
+                            <img class="rounded-circle" style="width: 40px; height: 40px;" src="{% static '/image/user-4.jpg'%}" alt="">
+                            <a class="text-muted ml-2" href="">Javed</a>
+                        </div>
+                        <div class="d-flex align-items-center ml-4">
+                            <i class="far fa-bookmark text-primary"></i>
+                            <a class="text-muted ml-2" href="">ABC</a>
+                        </div>
+                    </div>
+                    <h4 class="font-weight-bold mb-3">ETC</h4>
+                    <p>The SIF organic farming project has been implemented in 23 villages of Tumkur and Koratagere talukas of Tumkur district. The project supported by Save Indian Farmers, USA. The project objective is to motivate and support small and marginal farmers to adopt organic... </p>
+                    <a class="border-bottom border-primary text-uppercase text-decoration-none" href="">Read More <i class="fa fa-angle-right"></i></a>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
 <!-- Blog End -->
 
     
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-white mt-5 py-5 px-sm-3 px-md-5">
-        <div class="row pt-5">
-            <div class="col-lg-7 col-md-6">
-                <div class="row">
-                    <div class="col-md-6 mb-5">
-                        <h3 class="text-primary mb-4">Get In Touch</h3>
-                        <p><i class="fa fa-map-marker-alt mr-2"></i>MIDC Road, Ambi , Pune</p>
-                        <p><i class="fa fa-phone-alt mr-2"></i>+91 8104728761</p>
-                        <p><i class="fa fa-envelope mr-2"></i>farmeasyproject2022.com</p>
-                        <div class="d-flex justify-content-start mt-4">
-                            <a class="btn btn-outline-light btn-social mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-light btn-social mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-light btn-social mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-5">
-                        <h3 class="text-primary mb-4">Quick Links</h3>
-                        <div class="d-flex flex-column justify-content-start">
-                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>About Us</a>
-                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our Services</a>
-                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Pricing Plan</a>
-                            <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-5 col-md-6 mb-5">
-                <h3 class="text-primary mb-4">Feedback</h3>
-                <p>Give us your thoughts so that we can improve ourselves as a Company !Give us your thoughts so that we can improve ourselves as a Company !</p>
-                <div class="w-100">
-                    <div class="input-group">
-                        <input type="text" class="form-control border-light" style="padding: 30px;" placeholder="Enter your remarks">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary px-4">submit</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5" style="border-color: #3E3E4E !important;">
-        <div class="row">
-            <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
-                <p class="m-0 text-white">&copy; <a href="#">FarmEasy.com</a>. All Rights Reserved. 
-				
-				<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-				Designed by <a href="#">Deepak shelke</a>
-                </p>
-            </div>
-            <div class="col-lg-6 text-center text-md-right">
-                <ul class="nav d-inline-flex">
-                    <li class="nav-item">
-                        <a class="nav-link text-white py-0" href="#">Privacy</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white py-0" href="#">Terms</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white py-0" href="#">FAQs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white py-0" href="#">Help</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!-- Footer End -->
+{% include 'myHome/footer.html' %}
 
 </body>
 
