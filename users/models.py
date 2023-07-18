@@ -14,6 +14,7 @@ class Profile(models.Model):
     pin = models.IntegerField(blank=True, null=True)
     state = models.CharField(max_length=200, blank=True, null=True)
     qr_code = models.ImageField(upload_to='qr_image',blank=True)
+    # test
     def __str__(self):
         return str(self.name)
     

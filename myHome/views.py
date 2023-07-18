@@ -34,6 +34,7 @@ def sell_product_view(request):
     
     if request.method == 'POST':
         # test`
+        # test
         product_obj = Sell_Product.objects.get_or_create(crop_owner=crop_owner,crop_name=crop_name,crop_quan=crop_quan,crop_price=crop_price,crop_img=crop_img)
         return redirect('home')
 
